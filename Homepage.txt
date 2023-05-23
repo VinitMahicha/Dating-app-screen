@@ -1,0 +1,42 @@
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
+import CounterPage from './CounterPage';
+import TextInputPage from './TextInputPage';
+import PlaceholderPage from './PlaceholderPage';
+import './HomePage.css';
+
+function HomePage() {
+  return (
+    <Router>
+      <div className="container">
+        <div className="header">
+          <h1>Homepage</h1>
+        </div>
+
+        <div className="nav-container">
+          <nav className="nav-menu">
+            <NavLink exact to="/" activeClassName="active">
+              Counter
+            </NavLink>
+            <NavLink to="/text-input" activeClassName="active">
+              Text Input
+            </NavLink>
+            <NavLink to="/placeholder" activeClassName="active">
+              Placeholder
+            </NavLink>
+          </nav>
+        </div>
+
+        <div className="main-section">
+          <Switch>
+            <Route exact path="/" component={CounterPage} />
+            <Route path="/text-input" component={TextInputPage} />
+            <Route path="/placeholder" component={PlaceholderPage} />
+          </Switch>
+        </div>
+      </div>
+    </Router>
+  );
+}
+
+export default HomePage;
